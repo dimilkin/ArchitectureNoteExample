@@ -26,8 +26,12 @@ The tech stack includes:
  The application allows users to create a note. The user can give a titel, body and a priority index to his notes.<br>
  Upon clicking the "save button" the note is stored in the local database
  
- ### -Updating a Note:
- The items in the recycler view have onLongClickListener implemented. When trigered, an activity for result starts.<br>
+ ### - Updating a Note:
+ The items in the Recycler View have onLongClickListener implemented. When trigered, an activity for result starts.<br>
  The user can choose to update any information in the selected note.
+
+ ### - Deleting a Note
+ The user can delete a note of his/her choice. The Recycler View has an ItemTouchHelper attached to it.<br>
+  On left swipe the selected item is deleted. 
 
 
