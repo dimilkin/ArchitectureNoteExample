@@ -64,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }).attachToRecyclerView(recyclerView);
 
+
+        //The user can choose to update a not by clicking andholding on a selected item
         adapter.setLongClickListener(note -> {
             Intent intent = new Intent(MainActivity.this, AddEditNoteActivity.class);
             intent.putExtra(AddEditNoteActivity.EXTRA_ID, note.getId());

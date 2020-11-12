@@ -17,6 +17,9 @@ public class AddEditNoteActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "com.rilexo.architecturenoteexample.EXTRA_TITLE";
     public static final String EXTRA_DESCRIPTION = "com.rilexo.architecturenoteexample.EXTRA_DESCRIPTION";
     public static final String EXTRA_PRIORITY = "com.rilexo.architecturenoteexample.EXTRA_PRIORITY";
+    private static final int MIN_NOTE_PRIORITY_INDEX = 1;
+    private static final int MAX_NOTE_PRIORITY_INDEX = 10;
+    private static final int DEFAULT_VALUE = -1;
 
     private EditText textTitle, textDescription;
     private NumberPicker numPicker;
@@ -30,8 +33,8 @@ public class AddEditNoteActivity extends AppCompatActivity {
         textDescription = findViewById(R.id.edit_text_content);
         numPicker = findViewById(R.id.number_picker_priority);
 
-        numPicker.setMinValue(1);
-        numPicker.setMaxValue(10);
+        numPicker.setMinValue(MIN_NOTE_PRIORITY_INDEX);
+        numPicker.setMaxValue(MAX_NOTE_PRIORITY_INDEX);
 
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
 
@@ -40,11 +43,13 @@ public class AddEditNoteActivity extends AppCompatActivity {
             setTitle("Edit Note");
             textTitle.setText(intent.getStringExtra(EXTRA_TITLE));
             textDescription.setText(intent.getStringExtra(EXTRA_DESCRIPTION));
-            numPicker.setValue(intent.getIntExtra(EXTRA_PRIORITY, 1));
+            numPicker.setValue(intent.getIntExtra(EXTRA_PRIORITY, DEFAULT_VALUE));
         } else {
             setTitle("Add Note");
         }
     }
+
+
 
     private void saveNote() {
         String title = textTitle.getText().toString();
@@ -61,8 +66,8 @@ public class AddEditNoteActivity extends AppCompatActivity {
         data.putExtra(EXTRA_DESCRIPTION, description);
         data.putExtra(EXTRA_PRIORITY, priority);
 
-        int id = getIntent().getIntExtra(EXTRA_ID, -1);
-        if ( id != -1){
+        int id = getIntent().getIntExtra(EXTRA_ID, DEFAULT_VALUE);
+        if ( id != DEFAULT_VALUE){
             data.putExtra(EXTRA_ID, id);
         }
 
